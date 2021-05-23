@@ -1,0 +1,27 @@
+{
+    "name": "Eco.Client",
+    "references": [
+        "Unity.TextMeshPro",
+        "ThirdParty",
+        "InputUser",
+        "Unity.Mathematics",
+        "Unity.Entities.Hybrid",
+        "Unity.Transforms.Hybrid",
+        "Unity.Jobs",
+        "Unity.Entities",
+        "Unity.Entities.Properties",
+        "Unity.Burst",
+        "Unity.Collections",
+        "Unity.Transforms",
+        "Unity.Rendering.Hybrid"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
