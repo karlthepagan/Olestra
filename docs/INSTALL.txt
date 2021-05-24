@@ -1,0 +1,7 @@
+Unzip this file into your Eco Server so that it is in the path:
+
+SteamLibrary\steamapps\common\Eco\Eco_Data\Server\Mods\Olestra
+
+Version history:
+- 0.1.0, May 24, 2020
+   - initial working prototype

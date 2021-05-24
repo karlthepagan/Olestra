@@ -7,7 +7,6 @@ namespace Eco.Mods.TechTree
 {
     using System.Collections.Generic;
     using Eco.Core.Items;
-    using Eco.Gameplay.Components;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Players;
     using Eco.Shared.Localization;
@@ -18,7 +17,7 @@ namespace Eco.Mods.TechTree
     [Weight(80)]
     [Fuel(8000)]
     [Tag("Fuel")]
-    [Tag("Fat", 0)]
+    [Tag("Fat", 1)]
     [Ecopedia("Food", "Ingredients", createAsSubPage: true, display: InPageTooltip.DynamicTooltip)]
     public partial class OlestraItem : FoodItem
     {
@@ -27,55 +26,5 @@ namespace Eco.Mods.TechTree
 
         public override float Calories => 0;
         public override Nutrients Nutrition => new Nutrients() { Carbs = 0, Fat = 0, Protein = 0, Vitamins = 0 };
-
-        public OlestraItem()
-        {
-            // powered production is over 10x faster than unpowered
-            OlestraRecipe recipe = new OlestraRecipe(OlestraItem.GetRecipeList(), 100f, 0.3f);
-            UnpoweredOlestraRecipe unpoweredRecipe = new UnpoweredOlestraRecipe(OlestraItem.GetRecipeList(), 500f, 3.2f);
-
-            // oil refinery is powered
-            CraftingComponent.AddRecipe(typeof(OilRefineryObject), recipe);
-            // stove is powered
-            CraftingComponent.AddRecipe(typeof(StoveObject), recipe);
-            // kitchen is unpowered
-            CraftingComponent.AddRecipe(typeof(KitchenObject), unpoweredRecipe);
-        }
-
-        public static List<Recipe> GetRecipeList()
-        {
-            Recipe petrolOlestra = new Recipe(
-                "Olestra from Gasoline",
-                Localizer.DoStr("Olestra from Gasoline"),
-                new IngredientElement[1]
-                {
-                    new IngredientElement(typeof(PetroleumItem), 1, true)
-                },
-                new CraftingElement[2]
-                {
-                    // 100kJ/2 petroleum -> 48kJ fat
-                    new CraftingElement<OlestraItem>(6f),
-                    // 1 petrol barrel
-                    new CraftingElement<BarrelItem>(1f)
-                }
-            );
-            Recipe bdOlestra = new Recipe(
-                "Olestra from Biodiesel",
-                Localizer.DoStr("Olestra from Biodiesel"),
-                new IngredientElement[1]
-                {
-                    new IngredientElement(typeof(BiodieselItem), 1, true)
-                },
-                new CraftingElement[2]
-                {
-                    // 80kJ bd -> 80kJ fat
-                    new CraftingElement<OlestraItem>(10f),
-                    // 1 bd barrel
-                    new CraftingElement<BarrelItem>(1f)
-                }
-            );
-            return new List<Recipe>() { petrolOlestra, bdOlestra };
-        }
     }
-
 }
